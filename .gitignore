@@ -1,0 +1,18 @@
+# CLion
+.idea/
+cmake-build-*/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# 编译产物
+*.o
+*.a
+*.so
+*.exe
+
+# 日志
+*.log
