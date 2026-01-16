@@ -128,8 +128,8 @@ int main(void)
 
   /* Init scheduler */
   osKernelInitialize();
-  HAL_TIM_Base_Start_IT(&htim4);
-  HAL_TIM_Base_Start_IT(&htim5);
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_1);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -365,9 +365,10 @@ static void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOE_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
@@ -464,6 +465,7 @@ void Start_Motor_Task(void *argument)
   {
       drive_motor(my_joystick.btn1);
       HAL_GPIO_TogglePin(LED_R_GPIO_Port,LED_R_Pin);
+      osDelay(1);
   }
   /* USER CODE END Start_Motor_Task */
 }
